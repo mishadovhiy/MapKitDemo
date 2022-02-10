@@ -90,7 +90,7 @@ class MapDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             }
             return cell
         } else {
-            let needCollection = dataa.blockType != nil || dataa.photosType != nil || dataa.isCalendar
+            let needCollection = (dataa.blockType != nil || dataa.photosType != nil || dataa.isCalendar) && (dataa.photosType?.type ?? .servicePhotos != .multiplePhotos)
             if dataa.tableType != nil || needCollection {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TableCellCollectionView", for: indexPath) as! TableCellCollectionView
                 
@@ -101,24 +101,23 @@ class MapDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
                 if let layout = cell.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
                     layout.scrollDirection = scrollDir
                 }
-                let hideHeader = dataa.photosType?.type ?? .servicePhotos == .multiplePhotos ? true : false
-                cell.secHeaderShadows.isHidden = hideHeader ? true : false
-                cell.primaryBackgroundView.layer.shadowOpacity = hideHeader ? 0 : TableCellCollectionView.shadowOpasity
-                cell.primaryBackgroundView.backgroundColor = hideHeader ? .clear : .white
-                cell.secHeadBackView.isHidden = hideHeader ? true : false
-                cell.secHeadBackBackgroundView.isHidden = hideHeader ? true : false
-                cell.caretLeftButton.isHidden = hideHeader ? false : true
-                cell.caretRightButton.isHidden = hideHeader ? false : true
-                
-
+                let hideScroll = !dataa.isCalendar
+                cell.caretLeftButton.isHidden = hideScroll
+                cell.caretRightButton.isHidden = hideScroll
                 cell.sectionTitleLabel.text = dataa.sectionTitle
-                
-                
                 cell.Data = dataa
 
                 return cell
             } else {
-                return UITableViewCell()
+                if dataa.photosType?.type ?? .servicePhotos == .multiplePhotos {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "multiplePhotosTableCell", for: indexPath) as! multiplePhotosTableCell
+                    cell.collectionData = dataa.photosType
+                    return cell
+                } else {
+                    return UITableViewCell()
+                }
+                
+                
             }
         }
     }
@@ -147,7 +146,7 @@ class MapDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
                     return UITableView.automaticDimension
                 } else {
                     if let photoDataType = tableData[indexPath.row].photosType {
-                        return photoDataType.type == .multiplePhotos ? 230 : 210
+                        return photoDataType.type == .multiplePhotos ? 100 : 210
                     } else {
                         return tableData[indexPath.row].isCalendar ? 230 : 0
                     }

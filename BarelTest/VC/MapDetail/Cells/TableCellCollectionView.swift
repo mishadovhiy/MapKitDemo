@@ -221,17 +221,11 @@ class TableCellCollectionView:UITableViewCell, UICollectionViewDelegate, UIColle
             return CGSize(width: ((deviceWidth/numberOfItemsInRaw) - (6 + storyBoardLeftMargin)), height: 45)
         } else {
             if Data?.photosType?.type ?? .servicePhotos == .multiplePhotos {
-                return CGSize(width: 120, height: 80)
+                return CGSize(width: 120, height: multiplePhotosTableCell.cellHeight)
             } else {
                 return (Data?.isCalendar ?? false) ? CGSize(width: 70, height: 65) : CGSize(width: 80, height: 80)
             }
-            
-            
         }
-
-        
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

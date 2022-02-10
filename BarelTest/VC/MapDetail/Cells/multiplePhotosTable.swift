@@ -8,18 +8,48 @@
 import UIKit
 
 
-class multiplePhotosTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class multiplePhotosTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var collectionData: CellType.Photos?
+    static let cellHeight:CGFloat = 80
+    
+    var _collectionData: CellType.Photos?
+    var collectionData: CellType.Photos? {
+        get { return _collectionData }
+        set {
+            _collectionData = newValue
+            if let idx = newValue?.selectedIndex {
+                if idx < newValue?.photos.count ?? 0 {
+                    DispatchQueue.main.async {
+                        
+                        self.collectionView.scrollToItem(at: IndexPath(item: idx, section: 0), at: .centeredHorizontally, animated: false)
+                        
+                    }
+                }
+            }
+        }
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var rightScrollButton: UIButton!
     
+    @IBAction func scrollPressed(_ sender: UIButton) {
+        DispatchQueue.main.async {
+            print(sender.tag)
+            let cellSize = CGSize(width: self.layer.frame.width, height: self.layer.frame.height)
+            let scrollAmount = cellSize.width / 2
+            self.collectionView.scrollRectToVisible(CGRect(x: self.collectionView.contentOffset.x + (sender.tag == 1 ? scrollAmount : -(scrollAmount)), y: self.collectionView.contentOffset.y, width: cellSize.width, height: cellSize.height), animated: true)
+        }
+    }
     
     var drCalled = false
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         if !drCalled {
-            
+            rightScrollButton.transform = rightScrollButton.transform.rotated(by: .pi)
+            if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                layout.scrollDirection = .horizontal
+            }
         }
     }
     override func didMoveToWindow() {
@@ -41,6 +71,15 @@ class multiplePhotosTableCell:UITableViewCell, UICollectionViewDelegate, UIColle
         return cell
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 120, height: multiplePhotosTableCell.cellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionData?.selectedIndex = indexPath.row
+        collectionView.reloadData()
+    }
     
 }
 
