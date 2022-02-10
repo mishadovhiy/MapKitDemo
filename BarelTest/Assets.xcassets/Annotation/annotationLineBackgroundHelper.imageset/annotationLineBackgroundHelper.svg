@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="35px" viewBox="0 0 27 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>annotationLineBackgroundHelper</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-1387.000000, -1607.000000)" fill-rule="nonzero">
+            <g id="annotationLineBackgroundHelper" transform="translate(1387.000000, 1607.000000)">
+                <ellipse id="Oval" fill="#979797" opacity="0.6" style="mix-blend-mode: multiply;" cx="13.192" cy="31.628" rx="6.994" ry="2.657"></ellipse>
+                <path d="M26.246,13.192 C26.2482561,6.55072718 21.2652917,0.965647531 14.6667404,0.213563459 C8.06818907,-0.538520613 1.95621378,3.78198943 0.463919936,10.253432 C-1.02837391,16.7248746 2.57442785,23.2855809 8.836,25.499 L13.192,31.624 L17.544,25.499 C22.7577515,23.6528027 26.2435232,18.7229712 26.246,13.192 L26.246,13.192 Z" id="Path" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
