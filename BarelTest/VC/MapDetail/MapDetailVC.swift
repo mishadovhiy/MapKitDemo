@@ -19,6 +19,17 @@ class MapDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         tableView.dataSource = self
     }
 
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        /*let net = NetworkModel()
+        net.loadPet { loadedData in
+            
+        }*/
+    }
+    
     var sbvsLoaded = false
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -130,13 +141,12 @@ class MapDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             let tableHeight = CGFloat(tableCell.data.count) * rawHeight
             return tableHeight + storyBoardTopBottomMargins
         } else {
-            
-            
             if let blockDataType = tableData[indexPath.row].blockType {
                 let dataCount = blockDataType.collectionData.count
                 let rawsCount = Float(dataCount) / Float(blockDataType.itemsInRow ?? 3)
                 let roundedRows = ceil(rawsCount)
-                let rawHeight:Float = 55
+                let isServicePhotos = tableData[indexPath.row].photosType?.type ?? .multiplePhotos == .servicePhotos
+                let rawHeight:Float = !isServicePhotos ? 55 : 90
                 let height = roundedRows * rawHeight
                 let result = CGFloat(height) + storyBoardTopBottomMargins
                 return result

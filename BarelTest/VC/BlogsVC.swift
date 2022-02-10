@@ -52,8 +52,8 @@ class BlogsVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
                     print(imgSizes)
                     let imgUrl = (imgSizes["medium"] as? [String:Any] ?? [:])["source_url"] as? String ?? ""
                     print(imgUrl, "imgUrlimgUrlimgUrl")
-                    let previewText = self.getPTag(blog["excerpt"] as? String ?? "").removingPercentEncoding ?? ""
-                    let title = (blog["title"] as? String ?? "").removingPercentEncoding ?? ""
+                    let previewText = self.getPTag(blog["excerpt"] as? String ?? "").removingSpecialCharacters()
+                    let title = (blog["title"] as? String ?? "").removingSpecialCharacters()
                     
                     network.loadImage(url: imgUrl) { image in
                         let new = BlogsStruct(title: title, link: blog["link"] as? String ?? "", date: blog["date"] as? String ?? "", excerpt: previewText, content: (blog["content"] as? [String:Any] ?? [:])["rendered"] as? String ?? "", categories: resultCategories, photo: image)

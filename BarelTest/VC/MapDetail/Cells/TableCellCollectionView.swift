@@ -83,7 +83,6 @@ class TableCellCollectionView:UITableViewCell, UICollectionViewDelegate, UIColle
     
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        Data = nil
     }
     
     override func didMoveToWindow() {
@@ -208,8 +207,9 @@ class TableCellCollectionView:UITableViewCell, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if let blockData = Data?.blockType {
-            let numberOfItemsInRaw:CGFloat = CGFloat(blockData.itemsInRow ?? 1)
+        if Data?.blockType != nil || Data?.photosType?.type ?? .multiplePhotos == .servicePhotos {
+            let isServicePhotos = Data?.photosType?.type ?? .multiplePhotos == .servicePhotos
+            let numberOfItemsInRaw:CGFloat = !isServicePhotos ? CGFloat(Data?.blockType?.itemsInRow ?? 1) : 3
             let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             layout.sectionInset = UIEdgeInsets(top: 15, left: 4, bottom: 5, right: 4)
             layout.minimumInteritemSpacing = 04
@@ -218,7 +218,8 @@ class TableCellCollectionView:UITableViewCell, UICollectionViewDelegate, UIColle
             let deviceWidth = self.layer.frame.width
             print(deviceWidth)
             let storyBoardLeftMargin:CGFloat = 15
-            return CGSize(width: ((deviceWidth/numberOfItemsInRaw) - (6 + storyBoardLeftMargin)), height: 45)
+            let width = ((deviceWidth/numberOfItemsInRaw) - (6 + storyBoardLeftMargin))
+            return CGSize(width: width, height: isServicePhotos ? 80 : 45)
         } else {
             if Data?.photosType?.type ?? .servicePhotos == .multiplePhotos {
                 return CGSize(width: 120, height: multiplePhotosTableCell.cellHeight)

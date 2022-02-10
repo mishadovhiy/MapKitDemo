@@ -281,6 +281,11 @@ extension String {
         }
         return result
     }
+    
+    
+    func removingSpecialCharacters() -> String {
+        return (self.removingPercentEncoding)?.replacingOccurrences(of: "&#8217;", with: "'") ?? "-"
+    }
 }
 
 

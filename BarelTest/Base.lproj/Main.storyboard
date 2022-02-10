@@ -36,7 +36,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JT2-ku-eht">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="25"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHz-2w-x3L" customClass="CornerClass" customModule="BarelTest" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHz-2w-x3L" customClass="CornerView" customModule="BarelTest" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="0.0" width="96" height="25"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="D5r-YO-fth">
@@ -432,7 +432,7 @@
                                             <outlet property="titleLabel" destination="r3H-Rb-QLX" id="HdL-bK-oz8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BlogDetailCell" id="Kck-0e-Zi4" customClass="BlogDetailCell" customModule="BarelTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BlogDetailCell" id="Kck-0e-Zi4" customClass="BlogDetailCell" customModule="BarelTest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="310.5" width="414" height="238"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kck-0e-Zi4" id="rar-lQ-zRA">
@@ -475,7 +475,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kd0-hA-SVQ" customClass="corne">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kd0-hA-SVQ" customClass="CornerButton" customModule="BarelTest" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="48" width="394" height="40"/>
                                                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                             <constraints>
@@ -505,7 +505,7 @@
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="U8Q-44-qoC">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                                                     <subviews>
-                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZr-my-3Gp">
+                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZr-my-3Gp" customClass="CornerView" customModule="BarelTest" customModuleProvider="target">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="184.5" height="40"/>
                                                                                             <subviews>
                                                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CfM-I5-J2u">
@@ -535,7 +535,7 @@
                                                                                                 <constraint firstItem="CfM-I5-J2u" firstAttribute="top" secondItem="JZr-my-3Gp" secondAttribute="top" constant="5" id="eeh-gy-Y6x"/>
                                                                                             </constraints>
                                                                                         </view>
-                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPb-ei-iLg">
+                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPb-ei-iLg" customClass="CornerView" customModule="BarelTest" customModuleProvider="target">
                                                                                             <rect key="frame" x="189.5" y="0.0" width="184.5" height="40"/>
                                                                                             <subviews>
                                                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jg5-mH-qNq">
@@ -728,26 +728,26 @@
                                                     </cells>
                                                 </collectionView>
                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgf-lj-YAR">
-                                                    <rect key="frame" x="374" y="75" width="40" height="50"/>
+                                                    <rect key="frame" x="389" y="75" width="25" height="50"/>
                                                     <color key="tintColor" name="Colors/Purpure1"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="care-right">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="large"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="scrollPressed:" destination="AP1-Uf-twL" eventType="touchUpInside" id="HwM-vN-96U"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMv-4f-7wN">
-                                                    <rect key="frame" x="0.0" y="75" width="40" height="50"/>
+                                                    <rect key="frame" x="0.0" y="75" width="25" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="GYY-BE-eYe"/>
-                                                        <constraint firstAttribute="width" constant="40" id="kVX-V3-wcg"/>
+                                                        <constraint firstAttribute="width" constant="25" id="kVX-V3-wcg"/>
                                                     </constraints>
                                                     <color key="tintColor" name="Colors/Purpure1"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="care-right">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="large"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="scrollPressed:" destination="AP1-Uf-twL" eventType="touchUpInside" id="PPZ-fA-uXc"/>
@@ -881,7 +881,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="384" height="145"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <prototypes>
-                                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellOfTableCell" rowHeight="80" id="s1A-eU-S3L" customClass="cellOfTableCell" customModule="BarelTest" customModuleProvider="target">
+                                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellOfTableCell" rowHeight="80" id="s1A-eU-S3L" customClass="cellOfTableCell" customModule="BarelTest" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="44.5" width="384" height="80"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s1A-eU-S3L" id="6zo-iu-2RY">

@@ -8,7 +8,7 @@
 import UIKit
 
 
-class CornerClass: UIControl {
+class CornerView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         self.layer.cornerRadius = 6
@@ -16,5 +16,10 @@ class CornerClass: UIControl {
     }
 }
 
-class CornerButton: CornerClass {
+class CornerButton: UIButton {
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        self.layer.cornerRadius = 6
+        self.layer.masksToBounds = true
+    }
 }

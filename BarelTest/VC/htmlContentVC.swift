@@ -165,7 +165,7 @@ class htmlContentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if let text = result.slice(from: "<\(tag.rawValue)", to: "</\(tag.rawValue)>") {
             
             result = result.replacingFirstOccurrenceOfString(target: "<\(tag.rawValue)" + (text) + "</\(tag.rawValue)>", withString: "")
-            result = result.removingPercentEncoding ?? result
+            result = result.removingSpecialCharacters()
             print("resultresultresultresult starttt:::", result, "resultresultresultresult\n")
 
             var textResult = text

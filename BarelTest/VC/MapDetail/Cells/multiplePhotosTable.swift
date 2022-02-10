@@ -21,14 +21,17 @@ class multiplePhotosTableCell:UITableViewCell, UICollectionViewDelegate, UIColle
                 if idx < newValue?.photos.count ?? 0 {
                     DispatchQueue.main.async {
                         
-                        self.collectionView.scrollToItem(at: IndexPath(item: idx, section: 0), at: .centeredHorizontally, animated: false)
+                        self.collectionView.scrollToItem(at: IndexPath(item: idx, section: 0), at: .centeredHorizontally, animated: self.animateScroll)
+                        if self.animateScroll {
+                            self.animateScroll = false
+                        }
                         
                     }
                 }
             }
         }
     }
-    
+    private var animateScroll = false
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var rightScrollButton: UIButton!
@@ -77,6 +80,7 @@ class multiplePhotosTableCell:UITableViewCell, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        animateScroll = true
         collectionData?.selectedIndex = indexPath.row
         collectionView.reloadData()
     }

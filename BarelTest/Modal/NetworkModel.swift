@@ -15,6 +15,17 @@ class NetworkModel {
     
     //get pets inActive - YL8GE67AP-C-3
     
+    func loadPet(completion: @escaping ([String:Any]) -> ()) {
+        let head:[String:Any] = [
+            "inActive":"12"
+        ]
+        loadWith(dictionary: head, service: "v1/pet", httpMethod: .get) { loadedData, error in
+            print("pet start:\n", loadedData, "\npet end")
+            completion(loadedData)
+        }
+    }
+    
+    
     
     func loadImage(url:String, completion: @escaping (UIImage?) -> ()) {
 
