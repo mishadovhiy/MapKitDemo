@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(vc,"vcvcvcvc")
         let initialViewController = storyboard.instantiateViewController(withIdentifier: vc)
             
-         //test   self.window?.rootViewController = initialViewController
+        
+        self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
         
         return true
