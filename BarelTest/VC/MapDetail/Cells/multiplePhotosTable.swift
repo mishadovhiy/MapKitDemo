@@ -37,6 +37,7 @@ class multiplePhotosTableCell:UITableViewCell, UICollectionViewDelegate, UIColle
         
         cell.petImage.image = collectionData?.photos[indexPath.row].photo
         cell.petNameLabel.text = collectionData?.photos[indexPath.row].petName
+        cell.contentView.alpha = collectionData?.selectedIndex == indexPath.row ? 1 : 0.3
         return cell
     }
     
