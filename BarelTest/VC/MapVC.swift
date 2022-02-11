@@ -10,6 +10,7 @@ import MapKit
 
 class MapVC: UIViewController {
     
+    @IBOutlet weak var panView: UIView!
     @IBOutlet weak var ovarlayStack: UIStackView!
     @IBOutlet weak var detaiHelperView: UIView!
     @IBOutlet weak var mapView: MKMapView!
@@ -50,12 +51,13 @@ class MapVC: UIViewController {
         messageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.messagePressed(_:))))
         checkMessage()
         
-        ovarlayStack.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.detailContainerViewPinched(_:))))
+        panView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.detailContainerViewPinched(_:))))
 
     }
     var overlayY:CGFloat = 0
     var safeAreas:CGFloat = 0
     
+    @IBOutlet weak var panImage: UIImageView!
     @objc func detailContainerViewPinched(_ sender: UIPanGestureRecognizer) {
         let finger = sender.location(in: self.view)
         
@@ -63,12 +65,25 @@ class MapVC: UIViewController {
             let newPosition = finger.y - self.overlayY
             print(newPosition, "newPositionnewPosition")
             self.ovarlayStack.layer.transform = CATransform3DTranslate(CATransform3DIdentity, 0, newPosition < 0 ? 0 : newPosition, 0)
+            self.panView.layer.transform = CATransform3DTranslate(CATransform3DIdentity, 0, newPosition < 0 ? 0 : newPosition, 0)
         } else {
             if sender.state == .ended {
                 let toHide = self.view.frame.height / 2 > finger.y //wasShowingSideBar ? 200 : 80
                 toggleDetailView(toHide, animated: true)
             }
         }
+        if sender.state == .began || sender.state == .ended {
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.3) {
+                    //self.detaiHelperView.backgroundColor = sender.state == .began ? UIColor(red: 0, green: 0, blue: 0, alpha: 0.3) : .clear
+                    self.panImage.alpha = sender.state == .began ? 0.3 : 0
+                } completion: { _ in
+                    
+                }
+            }
+        }
+        
+        
     }
 
     var wasShowingSideBar = false
@@ -81,6 +96,7 @@ class MapVC: UIViewController {
             let hiddenHeight = self.view.frame.height - marginToShow
             UIView.animate(withDuration: animated ? 0.3 : 0.0) {
                 self.ovarlayStack.layer.transform = CATransform3DTranslate(CATransform3DIdentity, 0, show ? 0 : hiddenHeight, 0)
+                self.panView.layer.transform = CATransform3DTranslate(CATransform3DIdentity, 0, show ? 0 : hiddenHeight, 0)
             } completion: { _ in
                 MapDetailVC.shared?.tableView.isUserInteractionEnabled = show
             }
