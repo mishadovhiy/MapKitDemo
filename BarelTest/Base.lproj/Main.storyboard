@@ -22,10 +22,12 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Kk8-5d-3jl">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pF8-1Y-uAN">
-                                <rect key="frame" x="10" y="44" width="394" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="toggle message"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pF8-1Y-uAN">
+                                <rect key="frame" x="10" y="44" width="394" height="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="toggle message" image="test/folder.fill">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
                                 <connections>
                                     <action selector="toggleMessageView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fN4-ua-Tle"/>
                                 </connections>
@@ -135,14 +137,19 @@
                                                                     </view>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jc5-hp-saP">
                                                                         <rect key="frame" x="30" y="0.0" width="30" height="30"/>
-                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="backgroundColor" name="Colors/Green1"/>
+                                                                        <color key="tintColor" systemColor="systemPinkColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="30" id="1WR-oA-p1v"/>
                                                                         </constraints>
-                                                                        <imageReference key="image" image="care-right" symbolScale="large"/>
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                                                        <imageReference key="image" image="test/folder.fill" symbolScale="large"/>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="black"/>
                                                                     </imageView>
                                                                 </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="jc5-hp-saP" firstAttribute="top" secondItem="eTO-0R-koX" secondAttribute="top" id="hQD-K2-scy"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="jc5-hp-saP" secondAttribute="bottom" id="z6H-2R-WD7"/>
+                                                                </constraints>
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
@@ -1375,6 +1382,7 @@
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="test/dog" width="165" height="165"/>
         <image name="test/dog2" width="500" height="375"/>
+        <image name="test/folder.fill" width="10" height="7"/>
         <image name="unknown" width="20" height="16"/>
         <namedColor name="Colors/Green1">
             <color red="0.054999999701976776" green="0.49799999594688416" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1390,6 +1398,9 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
