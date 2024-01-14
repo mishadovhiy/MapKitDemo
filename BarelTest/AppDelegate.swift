@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(#function, self.safeArea?.top ?? "-----", "safeAreasafeAreasafeAreasafeArea")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = Globals.User.username == "" ? "LoginVC" : "TabBarController"
+            let vc = "TabBarController"//Globals.User.username == "" ? "LoginVC" : "TabBarController"
         print(vc,"vcvcvcvc")
         let initialViewController = storyboard.instantiateViewController(withIdentifier: vc)
             
